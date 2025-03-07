@@ -119,6 +119,11 @@ contract RPS {
     return choice;
 }
 
+// ฟังก์ชัน getHash ที่คำนวณ Hash จากข้อมูลที่เราได้ไป random
+function getHash(bytes32 data) public pure returns (bytes32) {
+    return keccak256(abi.encodePacked(data));
+}
+
    function withdrawIfTimeout() public {
         // กรณีที่มีผู้เล่น 1 คน และเวลาผ่านไปครบ 6 นาที
         if (numPlayer == 1 && timeUnit.elapsedMinutes() >= 6) {
